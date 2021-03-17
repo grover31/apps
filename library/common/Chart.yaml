@@ -14,7 +14,7 @@ keywords:
   - library-chart
   - common
 sources:
-  - https://github.com/truecharts/charts/tree/master/library/common
+  - https://github.com/truecharts/apps/tree/master/library/common
 # dependencies:
 maintainers:
   - name: TrueCharts
