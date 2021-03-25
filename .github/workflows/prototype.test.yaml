@@ -32,6 +32,11 @@ jobs:
   sonarr-lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Prepare
         id: prep
         run: |
@@ -39,13 +44,6 @@ jobs:
             chart="sonarr"
             maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
             echo ::set-output name=maxfolderversion::${maxfolderversion}
-
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-
 
       - name: Install Helm
         uses: azure/setup-helm@v1
