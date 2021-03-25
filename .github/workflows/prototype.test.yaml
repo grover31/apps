@@ -61,7 +61,7 @@ jobs:
 
       - name: Run chart-testing (lint)
         id: lint
-        run: ct lint --config .github/ct.yaml --charts 'stable/sonarr/${{ steps.prep.maxfolderversion }}'
+        run: ct lint --config .github/ct.yaml --charts 'stable/sonarr/${{ steps.prep.outputs.maxfolderversion }}'
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.1.0
