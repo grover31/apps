@@ -32,22 +32,38 @@ jobs:
   sonarr-lint:
     runs-on: ubuntu-latest
     steps:
+    - name: Prepare
+      id: prep
+      run: |
+          train="stable"
+          chart="sonarr"
+          maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
+          echo ::set-output name=maxfolderversion::${maxfolderversion}
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+
+
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: v3.4.0
+
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
+
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
+
+
       - name: Run chart-testing (lint)
         id: lint
-        run: ct lint --config .github/ct.yaml --charts 'stable/sonarr/*'
+        run: ct lint --config .github/ct.yaml --charts 'stable/sonarr/${{ steps.prep.maxfolderversion }}'
+
       - name: Create kind cluster
         uses: helm/kind-action@v1.1.0
 
@@ -127,6 +143,3 @@ jobs:
           git clone https://github.com/truenas/catalog_validation
           sudo pip3 install --disable-pip-version-check --exists-action w -r catalog_validation/requirements.txt > /dev/null 2>&1
           sudo pip3 install -U catalog_validation/.
-
-      - name: Validate changed charts
-        run: /bin/bash -c "PWD=${pwd}; sudo /usr/local/bin/charts_validate deploy --path $PWD"
