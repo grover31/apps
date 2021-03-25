@@ -43,6 +43,7 @@ jobs:
             train="stable"
             chart="sonarr"
             maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
+            echo "Detected folder version: ${maxfolderversion}"
             echo ::set-output name=maxfolderversion::${maxfolderversion}
 
       - name: Install Helm
