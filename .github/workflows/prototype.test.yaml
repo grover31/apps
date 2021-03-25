@@ -32,13 +32,13 @@ jobs:
   sonarr-lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Prepare
-      id: prep
-      run: |
-          train="stable"
-          chart="sonarr"
-          maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
-          echo ::set-output name=maxfolderversion::${maxfolderversion}
+      - name: Prepare
+        id: prep
+        run: |
+            train="stable"
+            chart="sonarr"
+            maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
+            echo ::set-output name=maxfolderversion::${maxfolderversion}
 
       - name: Checkout
         uses: actions/checkout@v2
