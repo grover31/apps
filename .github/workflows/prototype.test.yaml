@@ -244,12 +244,12 @@ jobs:
         id: prep-lint
         run: |
             if test -f "./stable/${{ matrix.app }}/item.yaml"; then
-              TRAIN="stable"
+              train="stable"
             else
-              TRAIN="base"
+              train="beta"
             fi
-            echo ::set-output name=train::${TRAIN}
-            maxfolderversion=$(ls -l ${TRAIN}/${{ matrix.app }} | grep ^d | awk '{print $9}' | tail -n 1)
+            echo ::set-output name=train::${train}
+            maxfolderversion=$(ls -l ${train}/${{ matrix.app }} | grep ^d | awk '{print $9}' | tail -n 1)
             echo "Detected folder version: ${maxfolderversion}"
             mkdir ${train}/${{ matrix.app }}/${maxfolderversion}/ci  || exit 0
             cp ${train}/${{ matrix.app }}/${maxfolderversion}/test_values.yaml ${train}/${{ matrix.app }}/${maxfolderversion}/ci/test-values.yaml
