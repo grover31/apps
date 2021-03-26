@@ -228,7 +228,7 @@ jobs:
         echo ::set-output name=containers::${CONTAINERS}
 
   app-tests:
-    needs: [common-test, common-unittest, catalog-test, app-changes]
+    needs: [common-test, common-unittest, catalog-test, changes]
     name: App Tests
     runs-on: ubuntu-latest
     strategy:
