@@ -146,17 +146,8 @@ jobs:
         load: true
         tags: |
           ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}:test
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new
-
-    # Temporary fix
-    # https://github.com/docker/build-push-action/issues/252
-    # https://github.com/moby/buildkit/issues/1896
-    - name: Move cache
-      if: ${{ steps.prep.outputs.goss == 'true' }}
-      run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache | exit 0
+        cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.container }:buildcache
+        cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.container }:buildcache,mode=max
 
     # Run GOSS tests if included with the container
     - name: Run GOSS tests
@@ -178,8 +169,8 @@ jobs:
         tags: |
           ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}:latest
           ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}:v${{ steps.prep.outputs.version }}
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new
+        cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.container }:buildcache
+        cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.container }:buildcache,mode=max
 
     # Temporary fix
     # https://github.com/docker/build-push-action/issues/252
