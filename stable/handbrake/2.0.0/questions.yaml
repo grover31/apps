@@ -139,28 +139,28 @@ questions:
             show_subquestions_if: true
             subquestions:
               - variable: DISPLAY_WIDTH
-                label:  "DISPLAY_WIDTH"
+                label: "DISPLAY_WIDTH"
                 description: "Width (in pixels) of the application's window."
                 schema:
                   type: string
                   default: "1280"
                   required: true
               - variable: DISPLAY_HEIGHT
-                label:  "DISPLAY_HEIGHT"
+                label: "DISPLAY_HEIGHT"
                 description: "Height (in pixels) of the application's window."
                 schema:
                   type: string
                   default: "768"
                   required: true
               - variable: SECURE_CONNECTION
-                label:  "SECURE_CONNECTION"
+                label: "SECURE_CONNECTION"
                 description: "When set to 1, an encrypted connection is used to access the application's GUI (either via a web browser or VNC client). See the Security section for more details."
                 schema:
                   type: string
                   default: "0"
                   required: true
               - variable: VNC_PASSWORD
-                label:  "VNC_PASSWORD"
+                label: "VNC_PASSWORD"
                 description: "Password needed to connect to the application's GUI. See the VNC Password section for more details."
                 schema:
                   private: true
@@ -175,28 +175,28 @@ questions:
             show_subquestions_if: true
             subquestions:
               - variable: AUTOMATED_CONVERSION_PRESET
-                label:  "AUTOMATED_CONVERSION_PRESET"
+                label: "AUTOMATED_CONVERSION_PRESET"
                 description: "HandBrake preset used by the automatic video converter. Identification of a preset must follow the format <CATEGORY>/<PRESET NAME>"
                 schema:
                   type: string
                   default: 'General/Very Fast 1080p30'
                   required: true
               - variable: AUTOMATED_CONVERSION_FORMAT
-                label:  "AUTOMATED_CONVERSION_FORMAT"
+                label: "AUTOMATED_CONVERSION_FORMAT"
                 description: "Video container format used by the automatic video converter for output files. This is typically the video filename extension."
                 schema:
                   type: string
                   default: 'mp4'
                   required: true
               - variable: AUTOMATED_CONVERSION_KEEP_SOURCE
-                label:  "AUTOMATED_CONVERSION_KEEP_SOURCE"
+                label: "AUTOMATED_CONVERSION_KEEP_SOURCE"
                 description: "When set to 0, a video that has been successfully converted is removed from the watch folder."
                 schema:
                   type: string
                   default: "1"
                   required: true
               - variable: AUTOMATED_CONVERSION_NON_VIDEO_FILE_ACTION
-                label:  "AUTOMATED_CONVERSION_NON_VIDEO_FILE_ACTION"
+                label: "AUTOMATED_CONVERSION_NON_VIDEO_FILE_ACTION"
                 description: "When set to ignore, a non-video file found in the watch folder is ignored. If set to copy, a non-video file is copied as-is to the output folder."
                 schema:
                   type: string
