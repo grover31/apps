@@ -20,7 +20,7 @@ sources:
   - https://handbrake.fr/
 dependencies:
   - name: common
-    repository: https://charts.truecharts.org/
+    repository: https://truecharts.org/
     version: 2.0.0
     # condition:
     # tags:
