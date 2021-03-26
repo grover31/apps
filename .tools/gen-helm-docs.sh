@@ -29,17 +29,17 @@ for chart in stable/*; do
       # Copy CONFIG template to each Chart directory, do not overwrite if exists
       cp -n "${config_template}" "${chart}/${maxfolderversion}/CONFIG.md.gotmpl" || true
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
 		  --output-file="README.md" \
           --template-files="${repository}/.tools/templates/chart/README.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="CONFIG.md" \
           --template-files="${chart}/${maxfolderversion}/CONFIG.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="app-readme.md" \
           --template-files="${repository}/.tools/templates/chart/app-readme.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
@@ -57,17 +57,17 @@ for chart in stable/*; do
       # Copy CONFIG template to each Chart directory, do not overwrite if exists
       cp -n "${config_template}" "${chart}/${maxfolderversion}/CONFIG.md.gotmpl" || true
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
 		  --output-file="README.md" \
           --template-files="${repository}/.tools/templates/chart/README.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="CONFIG.md" \
           --template-files="${chart}/${maxfolderversion}/CONFIG.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="app-readme.md" \
           --template-files="${repository}/.tools/templates/chart/app-readme.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
@@ -85,17 +85,17 @@ for chart in beta/*; do
       # Copy CONFIG template to each Chart directory, do not overwrite if exists
       cp -n "${config_template}" "${chart}/${maxfolderversion}/CONFIG.md.gotmpl" || true
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
 		  --output-file="README.md" \
           --template-files="${repository}/.tools/templates/chart/README.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="CONFIG.md" \
           --template-files="${chart}/${maxfolderversion}/CONFIG.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"
       helm-docs \
-          --ignore-file="${repository}/.helmdocsignore" \
+          --ignore-file=".helmdocsignore" \
           --output-file="app-readme.md" \
           --template-files="${repository}/.tools/templates/chart/app-readme.md.gotmpl" \
           --chart-search-root="${chart}/${maxfolderversion}"

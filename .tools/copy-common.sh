@@ -1,3 +1,4 @@
+#!/bin/sh
 for chart in stable/*; do
   if [ -d "${chart}" ]; then
       maxfolderversion=$(ls -l ${chart} | grep ^d | awk '{print $9}' | tail -n 1)
