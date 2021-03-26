@@ -79,7 +79,7 @@ jobs:
         if test -f "./.containers/apps/${{ matrix.container }}/Dockerfile"; then
           CATEGORY="apps"
         else
-           CATEGORY="base"
+          CATEGORY="base"
         fi
         echo ::set-output name=category::${CATEGORY}
         VERSION=$(cat ./.containers/${CATEGORY}/${{ matrix.container }}/VERSION)

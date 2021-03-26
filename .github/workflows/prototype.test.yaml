@@ -205,10 +205,34 @@ jobs:
           git commit -sm "Commit chart-index updates" || exit 0
           git push
 
+  app-changes:
+      name: Get changes
+    runs-on: ubuntu-20.04
+    outputs:
+      matrix: "{\"app\": ${{ steps.reduce.outputs.app }} }"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        list-files: json
+        filters: |
+          changed:
+          - 'stable/**'
+          - 'beta/**'
+    - run: echo '${{ toJson(steps.filter.outputs) }}' > changes.json
+    - id: reduce
+      run: |
+        CONTAINERS=$(jq --raw-output '.changed_files | fromjson | .[] |= sub("(?<filepath>(?<first_directory>(?<root1>[\/]?)[^\/]+\/)(?<second_directory>(?<root2>[\/]?)[^\/]+)(?<extra_paths>.+))"; "\(.second_directory)") | unique' changes.json)
+        echo ::set-output name=containers::${CONTAINERS}
 
-  chart-tests:
-    needs: [common-test, common-unittest, catalog-test]
+  app-tests:
+    needs: [common-test, common-unittest, catalog-test, app-changes]
     runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.app-changes.outputs.matrix) }}
+      fail-fast: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -218,16 +242,18 @@ jobs:
       - name: Prepare-Lint
         id: prep-lint
         run: |
-            train="stable"
-            chart="sonarr"
+            if test -f "./stable/${{ matrix.container }}/item.yaml"; then
+              TRAIN="stable"
+            else
+              TRAIN="base"
+            fi
+            echo ::set-output name=train::${TRAIN}
+
             maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
             echo "Detected folder version: ${maxfolderversion}"
             mkdir ${train}/${chart}/${maxfolderversion}/ci  || exit 0
             cp ${train}/${chart}/${maxfolderversion}/test_values.yaml ${train}/${chart}/${maxfolderversion}/ci/test-values.yaml
             echo ::set-output name=maxfolderversion::${maxfolderversion}
-            echo ::set-output name=train::${train}
-            echo ::set-output name=chart::${chart}
-
 
       - name: Install Helm
         uses: azure/setup-helm@v1
@@ -244,12 +270,12 @@ jobs:
 
       - name: Run chart-testing (lint)
         id: lint
-        run: ct lint --config .github/ct-lint.yaml --charts '${{ steps.prep-lint.outputs.train }}/${{ steps.prep-lint.outputs.chart }}/${{ steps.prep-lint.outputs.maxfolderversion }}'
+        run: ct lint --config .github/ct-lint.yaml --charts '${{ steps.prep-lint.outputs.train }}/${{ matrix.app }}/${{ steps.prep-lint.outputs.maxfolderversion }}'
 
       - name: Prepare-Test
         run: |
-            mv -f ${{ steps.prep-lint.outputs.train }}/${{ steps.prep-lint.outputs.chart }}/${{ steps.prep-lint.outputs.maxfolderversion }}/* ${{ steps.prep-lint.outputs.train }}/${{ steps.prep-lint.outputs.chart }}/
-            rm -Rf ${{ steps.prep-lint.outputs.train }}/${{ steps.prep-lint.outputs.chart }}/${{ steps.prep-lint.outputs.maxfolderversion }}
+            mv -f ${{ steps.prep-lint.outputs.train }}/${{ matrix.app }}/${{ steps.prep-lint.outputs.maxfolderversion }}/* ${{ steps.prep-lint.outputs.train }}/${{ matrix.app }}/
+            rm -Rf ${{ steps.prep-lint.outputs.train }}/${{ matrix.app }}/${{ steps.prep-lint.outputs.maxfolderversion }}
 
       - name: Create k3d cluster
         uses: nolar/setup-k3d-k3s@v1
@@ -257,4 +283,4 @@ jobs:
           version: v1.19
 
       - name: Run chart-testing (install)
-        run: ct install --config .github/ct-install.yaml --charts '${{ steps.prep-lint.outputs.train }}/${{ steps.prep-lint.outputs.chart }}'
+        run: ct install --config .github/ct-install.yaml --charts '${{ steps.prep-lint.outputs.train }}/${{ matrix.app }}'
