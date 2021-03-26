@@ -206,7 +206,7 @@ jobs:
           git push
 
   app-changes:
-      name: Get changes
+    name: Get changed Apps
     runs-on: ubuntu-20.04
     outputs:
       matrix: "{\"app\": ${{ steps.reduce.outputs.app }} }"
