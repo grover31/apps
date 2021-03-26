@@ -25,9 +25,6 @@ dependencies:
     repository: https://truecharts.org/
     version: 2.0.0
     # condition:
-    # tags:
-    # import-values:
-    # alias:
 maintainers:
   - name: TrueCharts
     email: info@truecharts.org
