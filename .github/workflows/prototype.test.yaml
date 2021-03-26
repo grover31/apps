@@ -222,8 +222,8 @@ jobs:
             chart="sonarr"
             maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
             echo "Detected folder version: ${maxfolderversion}"
-            mkdir ${train}/${chart}/ci  || exit 0
-            cp ${train}/${chart}/test_values.yaml ${train}/${chart}/ci/test-values.yaml
+            mkdir ${train}/${chart}/${maxfolderversion}/ci  || exit 0
+            cp ${train}/${chart}/${maxfolderversion}/test_values.yaml ${train}/${chart}/${maxfolderversion}/ci/test-values.yaml
             echo ::set-output name=maxfolderversion::${maxfolderversion}
             echo ::set-output name=train::${train}
             echo ::set-output name=chart::${chart}
