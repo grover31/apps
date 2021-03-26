@@ -209,7 +209,7 @@ jobs:
     name: Get changed Apps
     runs-on: ubuntu-20.04
     outputs:
-      matrix: "{\"app\": ${{ steps.reduce.outputs.app }} }"
+      matrix: "{\"app\": ${{ steps.reduce.outputs.apps }} }"
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -224,8 +224,8 @@ jobs:
     - run: echo '${{ toJson(steps.filter.outputs) }}' > changes.json
     - id: reduce
       run: |
-        CONTAINERS=$(jq --raw-output '.changed_files | fromjson | .[] |= sub("(?<filepath>(?<first_directory>(?<root1>[\/]?)[^\/]+\/)(?<second_directory>(?<root2>[\/]?)[^\/]+)(?<extra_paths>.+))"; "\(.second_directory)") | unique' changes.json)
-        echo ::set-output name=containers::${CONTAINERS}
+        APPS=$(jq --raw-output '.changed_files | fromjson | .[] |= sub("(?<filepath>(?<first_directory>(?<root1>[\/]?)[^\/]+\/)(?<second_directory>(?<root2>[\/]?)[^\/]+)(?<extra_paths>.+))"; "\(.second_directory)") | unique' changes.json)
+        echo ::set-output name=apps::${APPS}
 
   app-tests:
     needs: [common-test, common-unittest, catalog-test, changes]
