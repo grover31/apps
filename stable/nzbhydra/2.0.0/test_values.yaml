@@ -60,8 +60,6 @@ persistence:
     emptyDir: false
 
 
-
-
 appVolumeMounts:
   config:
     enabled: true

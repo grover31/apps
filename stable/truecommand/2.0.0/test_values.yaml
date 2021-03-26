@@ -38,8 +38,6 @@ persistence:
     # skipuninstall: false
     # existingClaim: ""
 
-
-
 ## TrueCharts Config
 
 appVolumeMounts:

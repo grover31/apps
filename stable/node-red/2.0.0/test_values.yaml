@@ -31,8 +31,6 @@ persistence:
 
 ## TrueCharts Config
 
-
-
 appVolumeMounts:
   config:
     enabled: true

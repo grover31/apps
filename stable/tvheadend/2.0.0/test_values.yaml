@@ -40,8 +40,6 @@ persistence:
     mountPath: /recordings
 
 
-
-
 appVolumeMounts:
   config:
     enabled: true

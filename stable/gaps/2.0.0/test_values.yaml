@@ -23,8 +23,6 @@ persistence:
     mountPath: /usr/data
 
 
-
-
 appVolumeMounts:
   data:
     enabled: true

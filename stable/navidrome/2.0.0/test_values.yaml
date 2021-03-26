@@ -58,8 +58,6 @@ persistence:
 
 
 
-
-
 appVolumeMounts:
   config:
     enabled: true

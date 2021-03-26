@@ -75,8 +75,6 @@ questions:
       type: string
       default: "002"
 
-
-
 ## TrueCharts Specific
 
   - variable: appVolumeMounts

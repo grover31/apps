@@ -41,8 +41,6 @@ persistence:
     # existingClaim: ""
 
 
-
-
 appVolumeMounts:
   config:
     enabled: true

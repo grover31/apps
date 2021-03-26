@@ -52,8 +52,6 @@ persistence:
     # skipuninstall: false
     # existingClaim: ""
 
-
-
 appVolumeMounts:
   config:
     enabled: true

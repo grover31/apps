@@ -86,8 +86,6 @@ additionalVolumeMounts:
     name: qbittorrent-scripts
 
 
-
-
 appVolumeMounts:
   config:
     enabled: true
