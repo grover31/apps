@@ -250,10 +250,10 @@ jobs:
             fi
             echo ::set-output name=train::${TRAIN}
 
-            maxfolderversion=$(ls -l ${train}/${chart} | grep ^d | awk '{print $9}' | tail -n 1)
+            maxfolderversion=$(ls -l ${TRAIN}/${{ matrix.app }} | grep ^d | awk '{print $9}' | tail -n 1)
             echo "Detected folder version: ${maxfolderversion}"
-            mkdir ${train}/${chart}/${maxfolderversion}/ci  || exit 0
-            cp ${train}/${chart}/${maxfolderversion}/test_values.yaml ${train}/${chart}/${maxfolderversion}/ci/test-values.yaml
+            mkdir ${train}/${{ matrix.app }}/${maxfolderversion}/ci  || exit 0
+            cp ${train}/${{ matrix.app }}/${maxfolderversion}/test_values.yaml ${train}/${{ matrix.app }}/${maxfolderversion}/ci/test-values.yaml
             echo ::set-output name=maxfolderversion::${maxfolderversion}
 
       - name: Install Helm
