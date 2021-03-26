@@ -103,7 +103,6 @@ jobs:
         platforms: all
 
     - name: Login to GHCR
-      if: github.event_name != 'pull_request'
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
@@ -118,15 +117,6 @@ jobs:
         install: true
         version: latest
         driver-opts: image=moby/buildkit:master
-
-    # Make sure we can store buildx cache in-between builds
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
 
     # Install the GOSS testing framework
     - name: Set up goss/dgoss
