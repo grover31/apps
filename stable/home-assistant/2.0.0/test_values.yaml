@@ -20,7 +20,7 @@ services:
   main:
     port:
       port: 8123
-    nodePort: 30023
+#    nodePort: 30023
 
 # # Enable devices to be discoverable
 # hostNetwork: true
