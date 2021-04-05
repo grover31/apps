@@ -31,7 +31,7 @@ questions:
 
   - variable: image
     description: "Docker Image Details"
-    group: "Container Images"
+    group: "Container Image"
     schema:
       type: dict
       required: true
