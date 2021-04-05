@@ -207,7 +207,7 @@ questions:
                 schema:
                   type: path
                   required: true
-                  default: "/data"
+                  default: "/config"
                   editable: false
               - variable: hostPathEnabled
                 label: "host Path Enabled"
