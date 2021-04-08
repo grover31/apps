@@ -91,7 +91,7 @@ questions:
       type: string
       default: "002"
 
-  # Configure Enviroment Variables
+## Configure Enviroment Variables
   - variable: environmentVariables
     label: "Image environment"
     group: "Configuration"
@@ -113,7 +113,7 @@ questions:
                 schema:
                   type: string
 
-  # Enable Host Network
+## Enable Host Network
   - variable: hostNetwork
     group: "Networking"
     label: "Enable Host Network"
@@ -121,7 +121,7 @@ questions:
       type: boolean
       default: false
 
-  # Volumes
+## Volumes
   - variable: appVolumeMounts
     label: "app storage"
     group: "Storage"
@@ -302,7 +302,7 @@ questions:
                   type: hostpath
                   required: true
 
-  # Ingres
+## Ingres
   - variable: ingress
     label: ""
     group: "Reverse Proxy Configuration"
