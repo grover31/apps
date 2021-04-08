@@ -1,2 +1,2 @@
-Deluge is a torrent download client
-
+Deluge App for TrueNAS SCALE
+This App is supplied by Grover131
