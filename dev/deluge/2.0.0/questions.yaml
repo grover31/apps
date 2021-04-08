@@ -432,37 +432,37 @@ questions:
                         enum:
                           - value: ""
                             description: "No Encryption/TLS/Certificates"
-#        - variable: udp
-#          label: "UDP Reverse Proxy Configuration"
-#          schema:
-#            type: dict
-#            attrs:
-#              - variable: enabled
-#                label: "Enable UDP Reverse Proxy"
-#                schema:
-#                  type: boolean
-#                  default: false
-#                  show_subquestions_if: true
-#                  subquestions:
-#                    - variable: type
-#                      label: "Select Reverse Proxy Type"
-#                      schema:
-#                        type: string
-#                        default: "UDP"
-#                        required: true
-#                        editable: false
-#                        enum:
-#                          - value: "UDP"
-#                            description: "Plain UDP Connections"
-#                    - variable: entrypoint
-#                      label: "Select Entrypoint"
-#                      schema:
-#                        type: string
-#                        default: "torrent-udp"
-#                        required: true
-#                        enum:
-#                          - value: "torrent-udp"
-#                            description: "Torrent-UDP: port 51413"
+        - variable: udp
+          label: "UDP Reverse Proxy Configuration"
+          schema:
+            type: dict
+            attrs:
+              - variable: enabled
+                label: "Enable UDP Reverse Proxy"
+                schema:
+                  type: boolean
+                  default: false
+                  show_subquestions_if: true
+                  subquestions:
+                    - variable: type
+                      label: "Select Reverse Proxy Type"
+                      schema:
+                        type: string
+                        default: "UDP"
+                        required: true
+                        editable: false
+                        enum:
+                          - value: "UDP"
+                            description: "Plain UDP Connections"
+                    - variable: entrypoint
+                      label: "Select Entrypoint"
+                      schema:
+                        type: string
+                        default: "torrent-udp"
+                        required: true
+                        enum:
+                          - value: "torrent-udp"
+                            description: "Torrent-UDP: port 51413"
 
   - variable: services
     group: "Networking"
