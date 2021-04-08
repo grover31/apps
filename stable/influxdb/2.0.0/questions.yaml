@@ -91,52 +91,6 @@ questions:
       type: string
       default: "002"
 
-  - variable: DOCKER_INFLUXDB_INIT_USERNAME
-    group: "Configuration"
-    label: "Initial super-User username"
-    description: "The username to set for the system's initial super-user"
-    schema:
-      required: true
-      type: string
-      default: "influx"
-
-  - variable: DOCKER_INFLUXDB_INIT_PASSWORD
-    group: "Configuration"
-    label: "Initial super-User password (min 8 characters)"
-    description: "The password to set for the system's inital super-user. default is 'influxdb'"
-    schema:
-      required: true
-      private: true
-      type: string
-      default: "influxdb"
-
-  - variable: DOCKER_INFLUXDB_INIT_ORG
-    group: "Configuration"
-    label: "System's initial organization"
-    description: "The name to set for the system's initial organization"
-    schema:
-      required: true
-      type: string
-      default: "influx"
-
-  - variable: DOCKER_INFLUXDB_INIT_BUCKET
-    group: "Configuration"
-    label: "System's initial bucket"
-    description: "The name to set for the system's initial bucket"
-    schema:
-      required: true
-      type: string
-      default: "influx"
-
-  - variable: DOCKER_INFLUXDB_INIT_RETENTION
-    group: "Configuration"
-    label: "Data Retention (Days)"
-    description: "The duration the system's initial bucket should retain data. If not set, the initial bucket will retain data forever."
-    schema:
-      required: true
-      type: int
-      default: 730
-
 ## Configure Enviroment Variables
   - variable: environmentVariables
     label: "Image environment"
