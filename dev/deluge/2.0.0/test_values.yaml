@@ -12,20 +12,20 @@ service:
   main:
     port:
       port: 8112
-  tcp:
-    enabled: true
-    type: ClusterIP
-    port:
-      port: 51413
-      protocol: TCP
-      targetPort: 51413
-  udp:
-    enabled: true
-    type: ClusterIP
-    port:
-      port: 51413
-      protocol: UDP
-      targetPort: 51413
+#  tcp:
+#    enabled: true
+#    type: ClusterIP
+#    port:
+#      port: 51413
+#      protocol: TCP
+#      targetPort: 51413
+#  udp:
+#    enabled: true
+#    type: ClusterIP
+#    port:
+#      port: 51413
+#      protocol: UDP
+#      targetPort: 51413
 
 appVolumeMounts:
   config:
@@ -33,8 +33,8 @@ appVolumeMounts:
     emptyDir: true
     setPermissions: true
     mountPath: "/config"
-  downloads:
-    enabled: false
-    emptyDir: false
-    setPermissions: true
-    mountPath: "/downloads"
+#  downloads:
+#    enabled: false
+#    emptyDir: false
+#    setPermissions: true
+#    mountPath: "/downloads"
