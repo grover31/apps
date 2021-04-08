@@ -124,7 +124,7 @@ questions:
 ## Volumes
   - variable: appVolumeMounts
     label: "app storage"
-    group: "Storage"
+    group: "Storage and Devices"
     schema:
       type: dict
       attrs:
