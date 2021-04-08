@@ -102,13 +102,13 @@ questions:
 
   - variable: DOCKER_INFLUXDB_INIT_PASSWORD
     group: "Configuration"
-    label: "Initial super-User password"
-    description: "The password to set for the system's inital super-user"
+    label: "Initial super-User password (min 8 characters)"
+    description: "The password to set for the system's inital super-user. default is 'influxdb'"
     schema:
       required: true
       private: true
       type: string
-      default: "influx"
+      default: "influxdb"
 
   - variable: DOCKER_INFLUXDB_INIT_ORG
     group: "Configuration"
