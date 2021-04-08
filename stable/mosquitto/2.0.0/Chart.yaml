@@ -1,0 +1,23 @@
+apiVersion: v2
+kubeVersion: ">=1.16.0-0"
+name: mosquitto
+version: 2.0.0
+appVersion: "auto"
+description: Mosquitto MQTT Broker App for TrueNAS SCALE
+type: application
+deprecated: false
+home: https://github.com/grover31/apps/tree/staging/stable/mosquitto
+icon: https://d1q6f0aelx0por.cloudfront.net/product-logos/library-eclipse-mosquitto-logo.png
+keywords:
+  - mosquitto
+  - mqtt
+  - broker
+sources:
+  - https://github.com/cdr/code-server
+dependencies:
+  - name: common
+    repository: https://truecharts.org/
+    version: 2.0.0
+maintainers:
+  - name: Grover131
+# annotations:
