@@ -1,4 +1,4 @@
-# Default values for Home Assistant
+# Default values for InfluxDB
 
 image:
   repository: influxdb
