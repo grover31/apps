@@ -1,0 +1,25 @@
+apiVersion: v2
+kubeVersion: ">=1.16.0-0"
+name: influxdb
+version: 2.0.0
+upstream_version: 2.0.4
+appVersion: "auto"
+description: InfluxDB App for TrueNAS SCALE
+type: application
+deprecated: false
+home: https://github.com/truecharts/apps/tree/master/stable/home-assistant
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+keywords:
+  - influxdb
+  - influx
+  - db
+  - database
+sources:
+  - https://github.com/cdr/code-server
+dependencies:
+  - name: common
+    repository: https://truecharts.org/
+    version: 2.0.0
+maintainers:
+  - name: Grover131
+# annotations:

@@ -1,0 +1,38 @@
+# Default values for Home Assistant
+
+image:
+  repository: influxdb
+  pullPolicy: IfNotPresent
+  tag: 2.0.4
+
+strategy:
+  type: Recreate
+
+envTpl:
+  DOCKER_INFLUXDB_INIT_MODE: "setup"
+
+services:
+  main:
+    port:
+      port: 8086
+  tcp:
+    enabled: true
+    type: ClusterIP
+    port:
+      port: 2003
+      protocol: TCP
+      targetPort: 2003
+
+# Volumes
+
+appVolumeMounts:
+  config:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/etc/influxdb2"
+  data:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/var/lib/influxdb2"
