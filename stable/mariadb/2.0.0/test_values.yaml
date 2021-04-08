@@ -1,0 +1,21 @@
+# Default values for mariadb.
+
+image:
+  repository: bitnami/mariadb
+  pullPolicy: IfNotPresent
+  tag: 10.5.9-debian-10-r28
+
+strategy:
+  type: Recreate
+
+service:
+  main:
+    port:
+      port: 3306
+
+appVolumeMounts:
+  data:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/bitnami/mariadb"
