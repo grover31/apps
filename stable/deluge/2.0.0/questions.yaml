@@ -533,7 +533,7 @@ questions:
                         max: 65535
                         default: 36052
                         required: true
-        - variable: TCP
+        - variable: tcp
           label: ""
           description: "TCP port for Torrent Connections"
           schema:
@@ -594,7 +594,7 @@ questions:
                         max: 65535
                         default: 51413
                         required: false
-        - variable: UDP
+        - variable: udp
           label: ""
           description: "UDP port for Torrent Connections"
           schema:
