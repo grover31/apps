@@ -472,7 +472,7 @@ questions:
                       label: "container port"
                       schema:
                         type: int
-                        default: 8112
+                        default: 1883
                         editable: false
                         hidden: true
                     - variable: targetport
@@ -480,7 +480,7 @@ questions:
                       description: "When connecting internally to this App, you'll need this port"
                       schema:
                         type: int
-                        default: 8112
+                        default: 1883
                         editable: false
                         hidden: true
                     - variable: nodePort
@@ -546,6 +546,6 @@ questions:
                         type: int
                         min: 9000
                         max: 65535
-                        default: 36052
+                        default: 36053
                         required: true
  
