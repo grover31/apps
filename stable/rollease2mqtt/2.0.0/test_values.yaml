@@ -1,0 +1,16 @@
+# Default values for mosquitto.
+
+image:
+  repository: quentinsf/image-amd64-rollease2mqtt
+  pullPolicy: IfNotPresent
+  tag: latest
+
+strategy:
+  type: Recreate
+
+appVolumeMounts:
+  data:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/data"
