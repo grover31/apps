@@ -90,7 +90,7 @@ questions:
                   type: string
 
   - variable: mqtt_url
-    group: "Configuration"
+    group: "Container Image"
     label: "MQTT Broker URL"
     description: "The URL (on port 1883) of the MQTT Broker"
     schema:

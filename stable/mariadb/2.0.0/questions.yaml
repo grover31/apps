@@ -3,6 +3,8 @@ groups:
     description: "Image to be used for container"
   - name: "Workload Configuration"
     description: "Configure workload deployment"
+  - name: "MariaDB Configuration"
+    description: "Configure MariaDB deployment"
   - name: "Configuration"
     description: "additional container configuration"
   - name: "Networking"
@@ -65,23 +67,53 @@ questions:
       type: string
       default: "002"
 
+  - variable: mariadbrootpassword
+    group: "MariaDB Configuration"
+    label: "mariadbrootpassword"
+    description: "mariadbrootpassword"
+    schema:
+      type: string
+      default: "abc123"
+
+#  - variable: MARIADB_ROOT_PASSWORD
+#    group: "Container Image"
+#    label: "MARIADB_ROOT_PASSWORD"
+#    schema:
+#      type: string
+#      default: ""
+#      required: true
+
+#  - variable: mariadbadmin
+#    group: "Configuration"
+#    label: "MariaDB Admin User Settings"
+#    schema:
+#      type: dict
+#      attrs:
+#        - variable: mariadb_root_user
+#          label: "mariadb_root_user"
+#          schema:
+#            type: string
+#            default: "root"
+
 ## Configure Enviroment Variables
-
-  - variable: MARIADB_ROOT_USER
-    group: "Configuration"
-    label: "MariaDB Root User"
-    schema:
-      type: string
-      default: "root"
-      required: true
-
-  - variable: MARIADB_ROOT_PASSWORD
-    group: "Configuration"
-    label: "MariaDB Root User Password"
-    schema:
-      type: string
-      default: ""
-      required: true
+#  - variable: mariadbadmin
+#    label: "MariaDB Admin User Settings"
+#    description: "These settings can be used to setup the Admin User"
+#    group: "Configuration"
+#    schema:
+#      type: dict
+#      attrs:
+#        - variable: MARIADB_ROOT_USER
+#          label: "MariaDB Root User"
+#          schema:
+#            type: string
+#            default: "root"
+#            required: true
+#        - variable: MARIADB_ROOT_PASSWORD
+#          label: "MariaDB Root User"
+#          schema:
+#            type: string
+#            required: true
 
   - variable: environmentVariables
     label: "Image environment"
@@ -162,6 +194,62 @@ questions:
                   type: path
                   required: true
                   default: "/bitnami/mariadb"
+                  editable: false
+              - variable: hostPathEnabled
+                label: "host Path Enabled"
+                schema:
+                  type: boolean
+                  default: false
+                  show_subquestions_if: true
+                  subquestions:
+                    - variable: hostPath
+                      label: "Host Path"
+                      schema:
+                        type: hostpath
+                        required: true
+        - variable: config
+          label: "data dataset"
+          schema:
+            type: dict
+            $ref:
+              - "normalize/ixVolume"
+            attrs:
+              - variable: enabled
+                label: "Enabled"
+                schema:
+                  type: boolean
+                  default: true
+                  required: true
+                  hidden: true
+                  editable: false
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                description: "Automatically set permissions on install"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: false
+              - variable: emptyDir
+                label: "emptyDir"
+                schema:
+                  type: boolean
+                  default: false
+                  hidden: true
+                  editable: false
+              - variable: datasetName
+                label: "Dataset Name"
+                schema:
+                  type: string
+                  default: "config"
+                  required: true
+                  editable: false
+              - variable: mountPath
+                label: "Mount Path"
+                description: "Path to mount inside the pod"
+                schema:
+                  type: path
+                  required: true
+                  default: "/opt/bitnami/mariadb/conf"
                   editable: false
               - variable: hostPathEnabled
                 label: "host Path Enabled"

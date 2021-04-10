@@ -9,9 +9,8 @@ image:
   pullPolicy: IfNotPresent
   tag: 10.5.9-debian-10-r28
 
-
-#env: {}
-#  ALLOW_EMPTY_PASSWORD: "yes"
+envTpl:
+  MARIADB_ROOT_PASSWORD: "{{ .Values.mariadbrootpassword }}"
 
 ##
 # Most other defaults are set in questions.yaml
