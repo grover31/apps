@@ -29,6 +29,6 @@ envTpl:
   PGDATA: "{{ .Values.pgdatapath }}"
   POSTGRES_PASSWORD: "{{ .Values.postgrespassword }}"
 #  POSTGRESQL_POSTGRES_PASSWORD: "{{ .Values.postgrespassword }}"
-#  POSTGRESQL_USERNAME: "{{ .Values.username }}"
+  POSTGRES_USER: "{{ .Values.username }}"
 #  POSTGRESQL_PASSWORD: "{{ .Values.password }}"
-#  POSTGRESQL_DATABASE: "{{ .Values.database }}"
+  POSTGRES_DB: "{{ .Values.database }}"

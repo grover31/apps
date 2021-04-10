@@ -67,10 +67,19 @@ questions:
       type: string
       default: "002"
 
+  - variable: username
+    group: "PostgresSQL Configuration"
+    label: "Superuser Username"
+    description: "Username for Superuser."
+    schema:
+      type: string
+      required: true
+      default: "postgres"
+
   - variable: postgrespassword
     group: "PostgresSQL Configuration"
     label: "Superuser Password"
-    description: "Superuser password for PostgreSQL."
+    description: "Superuser password."
     schema:
       type: string
       required: true
@@ -82,19 +91,12 @@ questions:
     schema:
       type: string
 
-  - variable: username
-    group: "PostgresSQL Configuration"
-    label: "Database Username"
-    description: "Username for Database to intialise at first startup."
-    schema:
-      type: string
-
-  - variable: password
-    group: "PostgresSQL Configuration"
-    label: "Database Password"
-    description: "Password for User of Database to intialise at first startup."
-    schema:
-      type: string
+#  - variable: password
+#    group: "PostgresSQL Configuration"
+#    label: "Database Password"
+#    description: "Password for User of Database to intialise at first startup."
+#    schema:
+#      type: string
 
   - variable: environmentVariables
     label: "Image environment"
