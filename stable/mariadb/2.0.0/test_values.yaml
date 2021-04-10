@@ -21,7 +21,11 @@ appVolumeMounts:
     emptyDir: true
     setPermissions: true
     mountPath: "/bitnami/mariadb"
-
+  config:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/opt/bitnami/mariadb/conf"
 
 # All values here are set as the docker defaults.
 envTpl:
