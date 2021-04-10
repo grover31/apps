@@ -8,6 +8,8 @@ image:
 strategy:
   type: Recreate
 
+#startAsRoot: true
+
 service:
   main:
     port:
@@ -19,16 +21,8 @@ appVolumeMounts:
     emptyDir: true
     setPermissions: true
     mountPath: "/bitnami/mariadb"
-  config:
-    enabled: true
-    emptyDir: true
-    setPermissions: true
-    mountPath: "/opt/bitnami/mariadb/conf"
 
-
-mariadbrootpassword: "abc123"
 
 # All values here are set as the docker defaults.
 envTpl:
   MARIADB_ROOT_PASSWORD: "{{ .Values.mariadbrootpassword }}"
-
