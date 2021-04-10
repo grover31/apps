@@ -109,9 +109,9 @@ questions:
       type: int
       default: 568
 
-  - variable: GUID
+  - variable: PGID
     group: "Container Image"
-    label: "GUID"
+    label: "PGID"
     description: "The groupID of the user/group running the application and owning the files"
     schema:
       type: int
