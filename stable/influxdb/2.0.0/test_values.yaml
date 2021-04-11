@@ -36,3 +36,11 @@ appVolumeMounts:
     emptyDir: true
     setPermissions: true
     mountPath: "/var/lib/influxdb2"
+
+envTpl:
+  DOCKER_INFLUXDB_INIT_USERNAME: "{{ .Values.username }}"
+  DOCKER_INFLUXDB_INIT_PASSWORD: "{{ .Values.password }}"
+  DOCKER_INFLUXDB_INIT_ORG: "{{ .Values.org }}"
+  DOCKER_INFLUXDB_INIT_BUCKET: "{{ .Values.bucket }}"
+  DOCKER_INFLUXDB_INIT_RETENTION: "{{ .Values.retention }}"
+  #DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "{{ .Values.admintoken }}"

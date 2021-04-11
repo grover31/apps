@@ -3,8 +3,10 @@ groups:
     description: "Image to be used for container"
   - name: "Workload Configuration"
     description: "Configure workload deployment"
+  - name: "InfluxDB Configuration"
+    description: "Configure Bitwarden deployment"
   - name: "Configuration"
-    description: "additional container configuration"
+    description: "additional InfluxDB configuration"
   - name: "Networking"
     description: "Configure / service for container"
   - name: "Storage and Devices"
@@ -90,6 +92,45 @@ questions:
     schema:
       type: string
       default: "002"
+
+  - variable: username
+    group: "InfluxDB Configuration"
+    label: "Username"
+    schema:
+      type: string
+      default: "influx"
+      required: true
+
+  - variable: password
+    group: "InfluxDB Configuration"
+    label: "Password"
+    schema:
+      type: string
+      default: "influx"
+      required: true
+
+  - variable: org
+    group: "InfluxDB Configuration"
+    label: "Organisation"
+    schema:
+      type: string
+      default: "influx"
+      required: true
+
+  - variable: bucket
+    group: "InfluxDB Configuration"
+    label: "Bucket"
+    schema:
+      type: string
+      default: "influx"
+      required: true
+
+#  - variable: retention
+#    group: "InfluxDB Configuration"
+#    label: "Retention"
+#    schema:
+#      type: int
+#      default: "influx"     
 
 ## Configure Enviroment Variables
   - variable: environmentVariables
