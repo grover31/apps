@@ -1,0 +1,53 @@
+# Default values for InfluxDB
+
+image:
+  repository: invoiceninja/invoiceninja
+  pullPolicy: IfNotPresent
+  tag: 5.1
+
+strategy:
+  type: Recreate
+
+envTpl:
+  DB_TYPE: "{{ .Values.dbtype }}"
+  DB_STRICT: "{{ .Values.dbstrict }}"
+  DB_HOST: "{{ .Values.dbhost }}"
+  DB_DATABASE: "{{ .Values.db }}"
+  DB_USERNAME: "{{ .Values.dbusername }}"
+  DB_PASSWORD: "{{ .Values.dbpassword }}"
+  APP_URL: "{{ .Values.url }}"
+  APP_KEY: "{{ .Values.key }}"
+  MAIL_DRIVER: "{{ .Values.maildriver }}"
+  MAIL_PORT: "{{ .Values.mailport }}"
+  MAIL_HOST: "{{ .Values.mailhost }}"
+  MAIL_ENCRYPTION: "{{ .Values.mailencryption }}"
+  MAIL_USERNAME: "{{ .Values.mailusername }}"
+  MAIL_FROM_ADDRESS: "{{ .Values.mailaddress }}"
+  MAIL_FROM_NAME: "{{ .Values.mailfrom }}"
+  MAIL_PASSWORD: "{{ .Values.mailpassword }}"
+  REQUIRE_HTTPS: "{{ .Values.requirehttps }}"
+  TRUSTED_PROXIES: "{{ .Values.trustedproxys }}"
+  GOOGLE_MAPS_ENABLED: "{{ .Values.googlemaps }}"
+  GOOGLE_MAPS_API_KEY: "{{ .Values.mapsapikey }}"
+  APP_DEBUG: "{{ .Values.debug }}"
+  APP_ENV: "{{ .Values.environment }}"
+
+
+services:
+  main:
+    port:
+      port: 80
+
+# Volumes
+
+appVolumeMounts:
+  storage:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/var/www/app/storage"
+  public:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "var/www/app/public"

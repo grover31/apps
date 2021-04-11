@@ -1,0 +1,39 @@
+##
+# This file contains Values.yaml content that gets added to the output of questions.yaml
+# It's ONLY meant for content that the user is NOT expected to change.
+# Example: Everything under "image" is not included in questions.yaml but is included here.
+##
+
+image:
+  repository: invoiceninja/invoiceninja
+  pullPolicy: IfNotPresent
+  tag: 5.1
+
+envTpl:
+  DB_TYPE: "{{ .Values.dbtype }}"
+  DB_STRICT: "{{ .Values.dbstrict }}"
+  DB_HOST: "{{ .Values.dbhost }}"
+  DB_DATABASE: "{{ .Values.db }}"
+  DB_USERNAME: "{{ .Values.dbusername }}"
+  DB_PASSWORD: "{{ .Values.dbpassword }}"
+  APP_URL: "{{ .Values.url }}"
+  APP_KEY: "{{ .Values.key }}"
+  MAIL_DRIVER: "{{ .Values.maildriver }}"
+  MAIL_PORT: "{{ .Values.mailport }}"
+  MAIL_HOST: "{{ .Values.mailhost }}"
+  MAIL_ENCRYPTION: "{{ .Values.mailencryption }}"
+  MAIL_USERNAME: "{{ .Values.mailusername }}"
+  MAIL_FROM_ADDRESS: "{{ .Values.mailaddress }}"
+  MAIL_FROM_NAME: "{{ .Values.mailfrom }}"
+  MAIL_PASSWORD: "{{ .Values.mailpassword }}"
+  REQUIRE_HTTPS: "{{ .Values.requirehttps }}"
+  TRUSTED_PROXIES: "{{ .Values.trustedproxys }}"
+  GOOGLE_MAPS_ENABLED: "{{ .Values.googlemaps }}"
+  GOOGLE_MAPS_API_KEY: "{{ .Values.mapsapikey }}"
+  APP_DEBUG: "{{ .Values.debug }}"
+  APP_ENV: "{{ .Values.environment }}"
+
+##
+# Most other defaults are set in questions.yaml
+# For other options please refer to the wiki, default_values.yaml or the common library chart
+##
