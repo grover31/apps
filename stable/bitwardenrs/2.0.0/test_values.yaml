@@ -1,0 +1,48 @@
+# Default values for mariadb.
+
+image:
+  repository: bitwardenrs/server
+  pullPolicy: IfNotPresent
+  tag: latest
+
+strategy:
+  type: Recreate
+
+#startAsRoot: true
+
+service:
+  main:
+    port:
+      port: 80
+      targetport: 80
+
+appVolumeMounts:
+  data:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/data"
+  attachments:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/attachments"
+  iconcache:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/icon_cache"
+
+attachmentspath: /attachments"
+iconcachepath: "/icon_cache"
+
+# All values here are set as the docker defaults.
+envTpl:
+  SIGNUPS_ALLOWED: "{{ .Values.signupsallowed }}"
+  INVITATIONS_ALLOWED: "{{ .Values.invitationsallowed }}"
+  SERVER_ADMIN_EMAIL: "{{ .Values.adminemail }}"
+  WEBSOCKET_ENABLED: "{{ .Values.websocketenabled }}"
+  ATTACHMENTS_FOLDER: "{{ .Values.attachmentspath }}"
+  ICON_CACHE_FOLDER: "{{ .Values.iconcachepath }}"
+  ADMIN_TOKEN: "{{ .Values.admintoken }}"
+#  DATABASE_URL: "{{ .Values.dburl }}"

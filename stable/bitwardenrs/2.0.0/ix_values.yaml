@@ -1,0 +1,29 @@
+##
+# This file contains Values.yaml content that gets added to the output of questions.yaml
+# It's ONLY meant for content that the user is NOT expected to change.
+# Example: Everything under "image" is not included in questions.yaml but is included here.
+##
+
+image:
+  repository: bitwardenrs/server
+  pullPolicy: IfNotPresent
+  tag: latest
+
+attachmentspath: "/attachments"
+iconcachepath: "/icon_cache"
+
+# All values here are set as the docker defaults.
+envTpl:
+  SIGNUPS_ALLOWED: "{{ .Values.signupsallowed }}"
+  INVITATIONS_ALLOWED: "{{ .Values.invitationsallowed }}"
+  SERVER_ADMIN_EMAIL: "{{ .Values.adminemail }}"
+  WEBSOCKET_ENABLED: "{{ .Values.websocketenabled }}"
+  ATTACHMENTS_FOLDER: "{{ .Values.attachmentspath }}"
+  ICON_CACHE_FOLDER: "{{ .Values.iconcachepath }}"
+  ADMIN_TOKEN: "{{ .Values.admintoken }}"
+#  DATABASE_URL: "{{ .Values.dburl }}"
+
+##
+# Most other defaults are set in questions.yaml
+# For other options please refer to the wiki, default_values.yaml or the common library chart
+##
