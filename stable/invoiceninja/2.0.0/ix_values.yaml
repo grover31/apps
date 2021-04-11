@@ -9,6 +9,8 @@ image:
   pullPolicy: IfNotPresent
   tag: 5.1
 
+startAsRoot: true
+
 envTpl:
   DB_TYPE: "{{ .Values.dbtype }}"
   DB_STRICT: "{{ .Values.dbstrict }}"
