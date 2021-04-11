@@ -36,7 +36,7 @@ envTpl:
 services:
   main:
     port:
-      port: 80
+      port: 9000
 
 # Volumes
 
