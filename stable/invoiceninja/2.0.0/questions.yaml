@@ -73,21 +73,21 @@ questions:
       $ref:
         - "definitions/timezone"
 
-  - variable: PUID
-    group: "Container Image"
-    label: "PUID"
-    description: "The UserID of the user running the application and owning the files"
-    schema:
-      type: int
-      default: 568
+#  - variable: PUID
+#    group: "Container Image"
+#    label: "PUID"
+#    description: "The UserID of the user running the application and owning the files"
+#    schema:
+#      type: int
+#      default: 568
 
-  - variable: PGID
-    group: "Container Image"
-    label: "PGID"
-    description: "The groupID of the user/group running the application and owning the files"
-    schema:
-      type: int
-      default: 568
+#  - variable: PGID
+#    group: "Container Image"
+#    label: "PGID"
+#    description: "The groupID of the user/group running the application and owning the files"
+#    schema:
+#      type: int
+#      default: 568
 
   - variable: UMASK
     group: "Container Image"
