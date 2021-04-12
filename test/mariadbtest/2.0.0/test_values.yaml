@@ -1,0 +1,27 @@
+# Default values for mariadb.
+
+image:
+  repository: linuxserver/mariadb
+  pullPolicy: IfNotPresent
+  tag: latest
+
+strategy:
+  type: Recreate
+
+#startAsRoot: true
+
+service:
+  main:
+    port:
+      port: 3306
+
+appVolumeMounts:
+  config:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/config"
+
+# All values here are set as the docker defaults.
+envTpl:
+  MYSQL_ROOT_PASSWORD: "{{ .Values.mariadbrootpassword }}"
