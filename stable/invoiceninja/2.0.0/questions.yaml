@@ -392,7 +392,7 @@ questions:
                   required: true
                   hidden: true
                   editable: false
-              - variable: setPermissions
+#              - variable: setPermissions
 #                label: "Automatic Permissions"
 #                description: "Automatically set permissions on install"
 #                schema:
