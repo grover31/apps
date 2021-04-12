@@ -73,21 +73,21 @@ questions:
       $ref:
         - "definitions/timezone"
 
-#  - variable: PUID
-#    group: "Container Image"
-#    label: "PUID"
-#    description: "The UserID of the user running the application and owning the files"
-#    schema:
-#      type: int
-#      default: 568
+  - variable: PUID
+    group: "Container Image"
+    label: "PUID"
+    description: "The UserID of the user running the application and owning the files"
+    schema:
+      type: int
+      default: 568
 
-#  - variable: PGID
-#    group: "Container Image"
-#    label: "PGID"
-#    description: "The groupID of the user/group running the application and owning the files"
-#    schema:
-#      type: int
-#      default: 568
+  - variable: PGID
+    group: "Container Image"
+    label: "PGID"
+    description: "The groupID of the user/group running the application and owning the files"
+    schema:
+      type: int
+      default: 568
 
   - variable: UMASK
     group: "Container Image"
@@ -334,13 +334,13 @@ questions:
                   required: true
                   hidden: true
                   editable: false
-#              - variable: setPermissions
-#                label: "Automatic Permissions"
-#                description: "Automatically set permissions on install"
-#                schema:
-#                  type: boolean
-#                  default: true
-#                  hidden: false
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                description: "Automatically set permissions on install"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: false
               - variable: emptyDir
                 label: "emptyDir"
                 schema:
@@ -392,13 +392,13 @@ questions:
                   required: true
                   hidden: true
                   editable: false
-#              - variable: setPermissions
-#                label: "Automatic Permissions"
-#                description: "Automatically set permissions on install"
-#                schema:
-#                  type: boolean
-#                  default: true
-#                  hidden: false
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                description: "Automatically set permissions on install"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: false
               - variable: emptyDir
                 label: "emptyDir"
                 schema:
@@ -635,7 +635,7 @@ questions:
                       label: "container port"
                       schema:
                         type: int
-                        default: 9000
+                        default: 80
                         editable: false
                         hidden: true
                     - variable: targetport
@@ -643,7 +643,7 @@ questions:
                       description: "When connecting internally to this App, you'll need this port"
                       schema:
                         type: int
-                        default: 9000
+                        default: 80
                         editable: false
                         hidden: true
                     - variable: nodePort

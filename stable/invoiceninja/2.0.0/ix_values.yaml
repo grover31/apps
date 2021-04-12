@@ -9,7 +9,7 @@ image:
   pullPolicy: IfNotPresent
   tag: 5.0.52
 
-startAsRoot: true
+#startAsRoot: true
 
 envTpl:
   DB_TYPE: "{{ .Values.dbtype }}"
