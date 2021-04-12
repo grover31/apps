@@ -117,7 +117,15 @@ questions:
     label: "DB Host"
     schema:
       type: string
-      default: "mariadb.ix-mariadb.svc.cluster.local:3306"
+      default: "mariadb.ix-mariadb.svc.cluster.local"
+      required: true
+
+  - variable: dbport
+    group: "DataBase Configuration"
+    label: "DB Port"
+    schema:
+      type: int
+      default: 3306
       required: true
 
   - variable: db
@@ -149,14 +157,21 @@ questions:
     label: "URL"
     schema:
       type: string
-      default: ""
+      default: "https://invoice.yourdomain.com"
 
   - variable: key
     group: "InvoiceNinja Configuration"
     label: "App Key"
     schema:
       type: string
-      default: ""
+      default: "S0meR4nd0mStr1ngS0meR4nd0mStr1ng"
+
+  - variable: cipher
+    group: "InvoiceNinja Configuration"
+    label: "App Key Cipher"
+    schema:
+      type: string
+      default: "AES-256-CBC"
 
   - variable: maildriver
     group: "Mail Configuration"
@@ -179,7 +194,7 @@ questions:
     label: "Mail Host"
     schema:
       type: string
-      default: ""
+      default: "smtp.mailgun.org"
       required: false
 
   - variable: mailencryption
@@ -187,7 +202,7 @@ questions:
     label: "Mail Server Encryption"
     schema:
       type: string
-      default: "tls"
+      default: "TLS"
       required: false
 
   - variable: mailusername
@@ -195,7 +210,7 @@ questions:
     label: "Mail Server Username"
     schema:
       type: string
-      default: ""
+      default: "username"
       required: false
 
   - variable: mailpassword
@@ -203,7 +218,7 @@ questions:
     label: "Mail Server Password"
     schema:
       type: string
-      default: ""
+      default: "password"
       required: false
 
   - variable: mailaddress
@@ -211,7 +226,7 @@ questions:
     label: "From Address"
     schema:
       type: string
-      default: ""
+      default: "finance@yourdomain.com"
       required: false
 
   - variable: mailfrom
@@ -219,15 +234,15 @@ questions:
     label: "From"
     schema:
       type: string
-      default: ""
+      default: "User Name"
       required: false
 
-  - variable: requirehttps
-    group: "InvoiceNinja Configuration"
-    label: "Require HTTPS"
-    schema:
-      type: boolean
-      default: false
+#  - variable: requirehttps
+#    group: "InvoiceNinja Configuration"
+#    label: "Require HTTPS"
+#    schema:
+#      type: boolean
+#      default: false
 
   - variable: trustedproxys
     group: "InvoiceNinja Configuration"
@@ -237,28 +252,27 @@ questions:
       default: "*"
       required: false
 
-  - variable: googlemaps
-    group: "InvoiceNinja Configuration"
-    label: "Enable Google Maps"
-    schema:
-      type: boolean
-      default: false
+#  - variable: googlemaps
+#    group: "InvoiceNinja Configuration"
+#    label: "Enable Google Maps"
+#    schema:
+#      type: boolean
+#      default: false
 
-  - variable: mapsapikey
-    group: "InvoiceNinja Configuration"
-    label: "Google Maps API Key"
-    schema:
-      type: string
-      default: ""
-      required: false
+#  - variable: mapsapikey
+#    group: "InvoiceNinja Configuration"
+#    label: "Google Maps API Key"
+#    schema:
+#      type: string
+#      default: ""
+#      required: false
 
   - variable: debug
     group: "InvoiceNinja Configuration"
-    label: "Debug Level"
+    label: "Debug"
     schema:
-      type: int
-      default: 1
-      required: true
+      type: boolean
+      default: false
 
   - variable: environment
     group: "InvoiceNinja Configuration"

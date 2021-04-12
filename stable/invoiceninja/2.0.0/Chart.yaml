@@ -2,7 +2,7 @@ apiVersion: v2
 kubeVersion: ">=1.16.0-0"
 name: invoiceninja
 version: 2.0.0
-upstream_version: 5.1
+upstream_version: 5.0.52
 appVersion: "auto"
 description: InvoiceNinja App for TrueNAS SCALE
 type: application

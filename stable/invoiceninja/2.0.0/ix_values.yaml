@@ -5,21 +5,23 @@
 ##
 
 image:
-  repository: anojht/invoiceninja
+  repository: invoiceninja/invoiceninja
   pullPolicy: IfNotPresent
-  tag: latest
+  tag: 5.0.52
 
-startAsRoot: true
+#startAsRoot: true
 
 envTpl:
   DB_TYPE: "{{ .Values.dbtype }}"
   DB_STRICT: "{{ .Values.dbstrict }}"
-  DB_HOST: "{{ .Values.dbhost }}"
-  DB_DATABASE: "{{ .Values.db }}"
-  DB_USERNAME: "{{ .Values.dbusername }}"
-  DB_PASSWORD: "{{ .Values.dbpassword }}"
+  DB_HOST1: "{{ .Values.dbhost }}"
+  DB_PORT1: "{{ .Values.dbport }}"
+  DB_DATABASE1: "{{ .Values.db }}"
+  DB_USERNAME1: "{{ .Values.dbusername }}"
+  DB_PASSWORD1: "{{ .Values.dbpassword }}"
   APP_URL: "{{ .Values.url }}"
   APP_KEY: "{{ .Values.key }}"
+  APP_CIPHER: "{{ .Values.cipher }}"
   MAIL_DRIVER: "{{ .Values.maildriver }}"
   MAIL_PORT: "{{ .Values.mailport }}"
   MAIL_HOST: "{{ .Values.mailhost }}"
@@ -28,10 +30,10 @@ envTpl:
   MAIL_FROM_ADDRESS: "{{ .Values.mailaddress }}"
   MAIL_FROM_NAME: "{{ .Values.mailfrom }}"
   MAIL_PASSWORD: "{{ .Values.mailpassword }}"
-  REQUIRE_HTTPS: "{{ .Values.requirehttps }}"
+#  REQUIRE_HTTPS: "{{ .Values.requirehttps }}"
   TRUSTED_PROXIES: "{{ .Values.trustedproxys }}"
-  GOOGLE_MAPS_ENABLED: "{{ .Values.googlemaps }}"
-  GOOGLE_MAPS_API_KEY: "{{ .Values.mapsapikey }}"
+#  GOOGLE_MAPS_ENABLED: "{{ .Values.googlemaps }}"
+#  GOOGLE_MAPS_API_KEY: "{{ .Values.mapsapikey }}"
   APP_DEBUG: "{{ .Values.debug }}"
   APP_ENV: "{{ .Values.environment }}"
 
