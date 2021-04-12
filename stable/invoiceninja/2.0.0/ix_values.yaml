@@ -5,9 +5,9 @@
 ##
 
 image:
-  repository: invoiceninja/invoiceninja
+  repository: anojht/invoiceninja
   pullPolicy: IfNotPresent
-  tag: 5.1
+  tag: latest
 
 startAsRoot: true
 
