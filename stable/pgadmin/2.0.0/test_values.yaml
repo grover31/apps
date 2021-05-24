@@ -8,6 +8,10 @@ image:
 strategy:
   type: Recreate
 
+envTpl:
+  PGADMIN_DEFAULT_EMAIL: "{{ .Values.email }}"
+  PGADMIN_DEFAULT_PASSWORD: "{{ .Values.pass }}"
+
 services:
   main:
     port:
@@ -29,3 +33,8 @@ appVolumeMounts:
     emptyDir: true
     setPermissions: true
     mountPath: "/var/lib/pgadmin"
+  log:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/var/log/pgadmin"

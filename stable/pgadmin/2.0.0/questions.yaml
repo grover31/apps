@@ -93,6 +93,21 @@ questions:
       type: string
       default: "002"
 
+  - variable: email
+    group: "Configuration"
+    label: "Default Email"
+    schema:
+      type: string
+      default: ""
+      required: true
+
+  - variable: pass
+    group: "Configuration"
+    label: "Default Password"
+    schema:
+      type: string
+      default: ""
+      required: true
 
   # Configure Enviroment Variables
   - variable: environmentVariables
@@ -247,6 +262,63 @@ questions:
                   type: path
                   required: true
                   default: "/var/lib/pgadmin"
+                  editable: false
+              - variable: hostPathEnabled
+                label: "host Path Enabled"
+                schema:
+                  type: boolean
+                  default: false
+                  show_subquestions_if: true
+                  subquestions:
+                    - variable: hostPath
+                      label: "Host Path"
+                      schema:
+                        type: hostpath
+                        required: true
+        - variable: log
+          label: "log dataset"
+          schema:
+            type: dict
+            $ref:
+              - "normalize/ixVolume"
+            attrs:
+              - variable: enabled
+                label: "Enabled"
+                schema:
+                  type: boolean
+                  default: true
+                  required: true
+                  hidden: true
+                  editable: false
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                description: "Automatically set permissions on install"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: false
+              - variable: emptyDir
+                label: "emptyDir"
+                schema:
+                  type: boolean
+                  default: false
+                  hidden: true
+                  editable: false
+              - variable: datasetName
+                label: "Dataset Name"
+                schema:
+                  type: string
+                  default: "log"
+                  required: true
+                  editable: false
+                  hidden: true
+              - variable: mountPath
+                label: "Mount Path"
+                description: "Path to mount inside the pod"
+                schema:
+                  type: path
+                  required: true
+                  default: "/var/log/pgadmin"
                   editable: false
               - variable: hostPathEnabled
                 label: "host Path Enabled"

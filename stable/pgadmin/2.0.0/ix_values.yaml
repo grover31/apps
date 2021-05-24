@@ -9,6 +9,10 @@ image:
   pullPolicy: IfNotPresent
   tag: 5.3
 
+envTpl:
+  PGADMIN_DEFAULT_EMAIL: "{{ .Values.email }}"
+  PGADMIN_DEFAULT_PASSWORD: "{{ .Values.pass }}"
+
 ##
 # Most other defaults are set in questions.yaml
 # For other options please refer to the wiki, default_values.yaml or the common library chart
