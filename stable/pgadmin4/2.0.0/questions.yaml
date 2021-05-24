@@ -144,7 +144,7 @@ questions:
                 schema:
                   type: path
                   required: true
-                  default: "/mosquitto/data"
+                  default: "/var/lib/pgadmin"
                   editable: false
               - variable: hostPathEnabled
                 label: "host Path Enabled"
@@ -360,7 +360,7 @@ questions:
                       label: "container port"
                       schema:
                         type: int
-                        default: 1883
+                        default: 80
                         editable: false
                         hidden: true
                     - variable: targetport
@@ -368,7 +368,7 @@ questions:
                       description: "When connecting internally to this App, you'll need this port"
                       schema:
                         type: int
-                        default: 1883
+                        default: 80
                         editable: false
                         hidden: true
                     - variable: nodePort
