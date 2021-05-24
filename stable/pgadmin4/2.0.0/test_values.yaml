@@ -1,0 +1,21 @@
+# Default values for mosquitto.
+
+image:
+  repository: dpage/pgadmin4
+  pullPolicy: IfNotPresent
+  tag: 5.1
+
+strategy:
+  type: Recreate
+
+service:
+  main:
+    port:
+      port: 80
+
+appVolumeMounts:
+  data:
+    enabled: true
+    emptyDir: true
+    setPermissions: true
+    mountPath: "/var/lib/pgadmin"

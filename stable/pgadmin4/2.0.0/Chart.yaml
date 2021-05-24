@@ -1,0 +1,23 @@
+apiVersion: v2
+kubeVersion: ">=1.16.0-0"
+name: pgAdmin4
+version: 2.0.0
+appVersion: "auto"
+description: pgAdmin4 App for TrueNAS SCALE
+type: application
+deprecated: false
+home: https://github.com/grover31/apps/tree/staging/stable/pgAdmin4
+icon: https://avatars.githubusercontent.com/u/177543?s=400&v=4
+keywords:
+  - pgAdmin4
+  - db
+  - database
+sources:
+  - https://github.com/cdr/code-server
+dependencies:
+  - name: common
+    repository: https://truecharts.org/
+    version: 2.0.0
+maintainers:
+  - name: Grover131
+# annotations:
