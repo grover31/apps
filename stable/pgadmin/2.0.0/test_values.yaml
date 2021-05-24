@@ -1,4 +1,4 @@
-# Default values for mosquitto.
+# Default values for Sabnzbd.
 
 image:
   repository: dpage/pgadmin4
@@ -8,13 +8,23 @@ image:
 strategy:
   type: Recreate
 
-service:
+services:
   main:
     port:
-      port: 80
+      port: 8080
+
+env: {}
+  # TZ: UTC
+  # PUID: 1001
+  # PGID: 1001
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
 
 appVolumeMounts:
-  data:
+  config:
     enabled: true
     emptyDir: true
     setPermissions: true

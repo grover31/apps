@@ -1,2 +1,2 @@
-pgAdmin4 App for TrueNAS SCALE
-This App is supplied by Grover131
+Free and easy binary newsreader
+This App is supplied by TrueCharts, for more information please visit https://truecharts.org

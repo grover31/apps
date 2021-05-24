@@ -15,6 +15,8 @@ groups:
     description: "Reverse Proxy configuration"
   - name: "Advanced"
     description: "Advanced Configuration"
+  - name: "WARNING"
+    description: "WARNING"
 
 portals:
   web_portal:
@@ -27,7 +29,24 @@ portals:
 
 questions:
 
-## Update Policy
+  - variable: portal
+    group: "Container Image"
+    label: "Configure Portal Button"
+    schema:
+      type: dict
+      hidden: true
+      attrs:
+        - variable: enabled
+          label: "Enable"
+          description: "enable the portal button"
+          schema:
+            hidden: true
+            editable: false
+            type: boolean
+            default: true
+
+
+  # Update Policy
   - variable: strategyType
     group: "Container Image"
     label: "Update Strategy"
@@ -40,13 +59,13 @@ questions:
         - value: "Recreate"
           description: "Kill existing pods before creating new ones"
 
-## Configure Time Zone
+  # Configure Time Zone
   - variable: timezone
     group: "Container Image"
     label: "Timezone"
     schema:
       type: string
-      default: "Australia/Hobart"
+      default: "Etc/UTC"
       $ref:
         - "definitions/timezone"
 
@@ -74,7 +93,8 @@ questions:
       type: string
       default: "002"
 
-## Configure Enviroment Variables
+
+  # Configure Enviroment Variables
   - variable: environmentVariables
     label: "Image environment"
     group: "Configuration"
@@ -95,6 +115,8 @@ questions:
                 label: "Value"
                 schema:
                   type: string
+
+
   # Enable Host Networking
   - variable: hostNetwork
     group: "Networking"
@@ -173,15 +195,16 @@ questions:
                         default: 36052
                         required: true
 
+## TrueCharts Specific
+
   - variable: appVolumeMounts
     label: "app storage"
     group: "Storage and Devices"
     schema:
       type: dict
       attrs:
-        # Config ------------------------
-        - variable: data
-          label: "data dataset"
+        - variable: config
+          label: "config dataset"
           schema:
             type: dict
             $ref:
@@ -213,7 +236,7 @@ questions:
                 label: "Dataset Name"
                 schema:
                   type: string
-                  default: "data"
+                  default: "config"
                   required: true
                   editable: false
                   hidden: true
@@ -238,7 +261,67 @@ questions:
                         type: hostpath
                         required: true
 
-## Ingres
+  - variable: additionalAppVolumeMounts
+    label: "Custom app storage"
+    group: "Storage and Devices"
+    schema:
+      type: list
+      default: []
+      items:
+        - variable: volumeMount
+          label: "Custom Storage"
+          schema:
+            type: dict
+            attrs:
+              - variable: enabled
+                label: "Enabled"
+                schema:
+                  type: boolean
+                  default: true
+                  required: true
+                  hidden: true
+                  editable: false
+              - variable: setPermissions
+                label: "Automatic Permissions"
+                description: "Automatically set permissions on install"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: false
+              - variable: name
+                label: "Mountpoint Name"
+                schema:
+                  type: string
+                  default: ""
+                  required: true
+                  editable: true
+              - variable: emptyDir
+                label: "emptyDir"
+                schema:
+                  type: boolean
+                  default: false
+                  hidden: true
+                  editable: false
+              - variable: mountPath
+                label: "Mount Path"
+                description: "Path to mount inside the pod"
+                schema:
+                  type: path
+                  required: true
+                  default: ""
+                  editable: true
+              - variable: hostPathEnabled
+                label: "host Path Enabled"
+                schema:
+                  type: boolean
+                  default: true
+                  hidden: true
+              - variable: hostPath
+                label: "Host Path"
+                schema:
+                  type: hostpath
+                  required: true
+
   - variable: ingress
     label: ""
     group: "Reverse Proxy Configuration"
@@ -246,7 +329,7 @@ questions:
       type: dict
       attrs:
         - variable: main
-          label: "WebUI"
+          label: "Web Reverse Proxy Configuration"
           schema:
             type: dict
             attrs:
@@ -328,4 +411,3 @@ questions:
                       schema:
                         type: string
                         default: ""
-                        
