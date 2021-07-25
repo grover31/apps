@@ -9,8 +9,8 @@ image:
   pullPolicy: IfNotPresent
   tag: latest
 
-env: {}
-  device: /dev/ttyACM0
+#env: {}
+#  device: /dev/ttyACM0
 
 
 ##
